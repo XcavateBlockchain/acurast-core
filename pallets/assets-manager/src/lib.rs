@@ -67,7 +67,7 @@ pub mod pallet {
     }
 
     #[pallet::genesis_build]
-    impl<T: Config<I>, I: 'static> GenesisBuild<T, I> for GenesisConfig<T, I> {
+    impl<T: Config<I>, I: 'static> BuildGenesisConfig for GenesisConfig<T, I> {
         fn build(&self) {
             for (internal_asset_id, parachain, pallet_instance, general_index) in
                 self.assets.clone()

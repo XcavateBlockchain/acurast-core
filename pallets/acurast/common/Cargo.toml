@@ -10,15 +10,28 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-codec = { package = "parity-scale-codec", version = "3.0.0", features = ["derive"], default-features = false }
-scale-info = { version = "2.2.0", features = ["derive"], default-features = false }
+codec = { package = "parity-scale-codec", version = "3.0.0", features = [
+    "derive",
+], default-features = false }
+scale-info = { version = "2.2.0", features = [
+    "derive",
+], default-features = false }
 # Substrate
-frame-support = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "polkadot-v0.9.43" }
-sp-std = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "polkadot-v0.9.43" }
+frame-support = { git = "https://github.com/moondance-labs/polkadot-sdk", default-features = false, branch = "tanssi-polkadot-v1.1.0" }
+sp-std = { git = "https://github.com/moondance-labs/polkadot-sdk", default-features = false, branch = "tanssi-polkadot-v1.1.0" }
 # Attestation
-asn1 = { version = "0.11.0", default-features = false, features = ["derive"], optional = true }
-p256 = { git = "https://github.com/Acurast/elliptic-curves", default-features = false, features = ["ecdsa", "sha256"], optional = true }
-p384 = { package = "p384_vendored", path = "../p384", default-features = false, features = ["ecdsa", "arithmetic", "expose-field"], optional = true }
+asn1 = { version = "0.11.0", default-features = false, features = [
+    "derive",
+], optional = true }
+p256 = { git = "https://github.com/Acurast/elliptic-curves", default-features = false, features = [
+    "ecdsa",
+    "sha256",
+], optional = true }
+p384 = { package = "p384_vendored", path = "../p384", default-features = false, features = [
+    "ecdsa",
+    "arithmetic",
+    "expose-field",
+], optional = true }
 sha2 = { version = "0.10", default-features = false, optional = true }
 num-bigint = { version = "0.4.3", default-features = false, optional = true }
 ecdsa-vendored = { package = "ecdsa_vendored", path = "../p384/ecdsa", default-features = false, optional = true }
@@ -36,11 +49,4 @@ std = [
     "scale-info/std",
     "serde",
 ]
-attestation = [
-    "asn1",
-    "p256",
-    "p384",
-    "sha2",
-    "num-bigint",
-    "ecdsa-vendored",
-]
+attestation = ["asn1", "p256", "p384", "sha2", "num-bigint", "ecdsa-vendored"]

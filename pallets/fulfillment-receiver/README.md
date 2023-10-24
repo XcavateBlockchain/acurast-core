@@ -1,4 +1,5 @@
 # Acurast Fulfillment Receiver Pallet
+
 ## 🚧🚧🚧 The project is still a work in progress 🚧🚧🚧
 
 ## Introduction
@@ -171,7 +172,7 @@ contract SimpleFulfill {
 
 ### Example integration with WASM smart contract parachain
 
-The following example shows a possible integration approach for a WASM smart contract parachain (using [pallet-contracts](https://github.com/paritytech/substrate/tree/master/frame/contracts)).
+The following example shows a possible integration approach for a WASM smart contract parachain (using [pallet-contracts](https://github.com/moondance-labs/polkadot-sdk/tree/master/frame/contracts)).
 Similarly to the EVM integration, the example shows how to route the fulfillment's payload to a smart contract by calling the `fulfill` method on it and passing the payload bytes as argument.
 
 ```rust
@@ -350,24 +351,24 @@ mod receiver {
 It is possible to directly call the fulfill method from the processors. The example script below shows how to call the above smart contract deployed on the Shibuya parachain:
 
 ```javascript
-const callIndex = '0x4606'; // the call index for the "call" extrinsic of pallet-contracts
+const callIndex = "0x4606"; // the call index for the "call" extrinsic of pallet-contracts
 const payload = _STD_.chains.substrate.codec.encodeUnsignedNumber(2, 128); // encoding the price value (2) as an u128
 const destination = "XTj3CLB3G6WnwPMgYo1PM2xi9BkDegtGw5WPd7X36G515La"; // the smart contract address
 _STD_.chains.substrate.signer.setSigner("SECP256K1"); // select which curve to use for the signature
 _STD_.chains.substrate.contract.fulfill(
-    "https://shibuya-rpc.dwellir.com", // the parachain rpc endpoint
-    callIndex,
-    destination,
-    payload,
-    {
-        refTime: "3951114240",
-        proofSize: "629760",
-    },
-    (opHash) => {
-        print("Succeeded: " + opHash)
-    },
-    (err) => {
-        print("Failed: " + err)
-    },
-)
+  "https://shibuya-rpc.dwellir.com", // the parachain rpc endpoint
+  callIndex,
+  destination,
+  payload,
+  {
+    refTime: "3951114240",
+    proofSize: "629760",
+  },
+  (opHash) => {
+    print("Succeeded: " + opHash);
+  },
+  (err) => {
+    print("Failed: " + err);
+  }
+);
 ```

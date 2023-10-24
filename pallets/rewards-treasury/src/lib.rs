@@ -14,7 +14,6 @@ pub mod pallet {
     use frame_support::traits::fungible::Inspect;
     use frame_support::traits::tokens::{Fortitude, Precision, Preservation};
     use frame_support::{
-        log,
         pallet_prelude::*,
         traits::{tokens::fungible::Mutate, Get},
     };
@@ -32,7 +31,8 @@ pub mod pallet {
             + IsType<<Self as frame_system::Config>::RuntimeEvent>;
         /// The epoch length in blocks. At each epoch's end the penultimate (last but one) balance is burnt.
         #[pallet::constant]
-        type Epoch: Get<<Self as frame_system::Config>::BlockNumber>;
+        // type Epoch: Get<<Self as frame_system::Config>::BlockNumber>;
+        type Epoch: Get<BlockNumberFor<Self>>;
         /// The ID for this pallet
         #[pallet::constant]
         type Treasury: Get<<Self as frame_system::Config>::AccountId>;
@@ -46,7 +46,7 @@ pub mod pallet {
     #[pallet::storage]
     #[pallet::getter(fn latest_burn)]
     pub(super) type LatestBurn<T: Config<I>, I: 'static = ()> =
-        StorageValue<_, T::BlockNumber, ValueQuery>;
+        StorageValue<_, BlockNumberFor<T>, ValueQuery>;
 
     #[pallet::pallet]
     pub struct Pallet<T, I = ()>(PhantomData<(T, I)>);
@@ -66,7 +66,7 @@ pub mod pallet {
     impl<T: Config<I>, I: 'static> Hooks<BlockNumberFor<T>> for Pallet<T, I> {
         fn on_finalize(_: BlockNumberFor<T>) {}
 
-        fn on_initialize(current_block: T::BlockNumber) -> Weight {
+        fn on_initialize(current_block: BlockNumberFor<T>) -> Weight {
             // check for <= (not ==) to ensure burns still happen when T::Epoch gets increased or decreased
             if Self::latest_burn() + T::Epoch::get() <= current_block {
                 (match <PenultimateBalance<T, I>>::try_mutate(

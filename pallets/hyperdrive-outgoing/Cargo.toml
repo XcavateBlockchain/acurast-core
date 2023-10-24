@@ -16,16 +16,20 @@ targets = ["x86_64-unknown-linux-gnu"]
 codec = { package = "parity-scale-codec", version = "3.0.0", default-features = false, features = [
 	"derive",
 ] }
-sp-core = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "polkadot-v0.9.43" }
-jsonrpsee = { version = "0.16.2", features = ["client-core", "server", "macros"], optional = true }
-sp-blockchain = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "polkadot-v0.9.43", optional = true }
+sp-core = { git = "https://github.com/moondance-labs/polkadot-sdk", default-features = false, branch = "tanssi-polkadot-v1.1.0" }
+jsonrpsee = { version = "0.16.2", features = [
+	"client-core",
+	"server",
+	"macros",
+], optional = true }
+sp-blockchain = { git = "https://github.com/moondance-labs/polkadot-sdk", default-features = false, branch = "tanssi-polkadot-v1.1.0", optional = true }
 
 # Acurast
 pallet-acurast = { path = "../acurast", default-features = false }
-pallet-acurast-marketplace = { path = "../marketplace", default-features = false}
+pallet-acurast-marketplace = { path = "../marketplace", default-features = false }
 acurast-common = { path = "../acurast/common", default-features = false }
-pallet-acurast-hyperdrive = {path = "../hyperdrive", default-features = false }
-mmr-lib = { package = "acurast-merkle-mountain-range",  git = "https://github.com/Acurast/merkle-mountain-range", default-features = false }
+pallet-acurast-hyperdrive = { path = "../hyperdrive", default-features = false }
+mmr-lib = { package = "acurast-merkle-mountain-range", git = "https://github.com/Acurast/merkle-mountain-range", default-features = false }
 
 # EVM
 rlp = { version = "0.5.2", default-features = false }
@@ -42,19 +46,19 @@ once_cell = { version = "1.17.1", default-features = false }
 
 # Benchmarks
 hex-literal = { version = "0.3", optional = true }
-frame-benchmarking = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43", optional = true, default-features = false }
+frame-benchmarking = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0", optional = true, default-features = false }
 
 # Substrate
-frame-support = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43", default-features = false }
-frame-system = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43", default-features = false }
+frame-support = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0", default-features = false }
+frame-system = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0", default-features = false }
 scale-info = { version = "2.2.0", default-features = false, features = [
 	"derive",
 ] }
-sp-std = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "polkadot-v0.9.43" }
-sp-runtime = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43", default-features = false }
-sp-arithmetic = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43", default-features = false }
-sp-io = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43", default-features = false }
-sp-api = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43", default-features = false }
+sp-std = { git = "https://github.com/moondance-labs/polkadot-sdk", default-features = false, branch = "tanssi-polkadot-v1.1.0" }
+sp-runtime = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0", default-features = false }
+sp-arithmetic = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0", default-features = false }
+sp-io = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0", default-features = false }
+sp-api = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0", default-features = false }
 
 # for RPC
 serde = { version = "1.0.136", features = ["derive"], optional = true }
@@ -63,8 +67,8 @@ log = { version = "0.4.17", default-features = false }
 
 # for mmr-gadget
 futures = { version = "0.3", optional = true }
-sc-client-api = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43", default-features = false, optional = true }
-sc-offchain = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43", default-features = false, optional = true }
+sc-client-api = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0", default-features = false, optional = true }
+sc-offchain = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0", default-features = false, optional = true }
 
 [dev-dependencies]
 hex-literal = "0.3"
@@ -76,10 +80,10 @@ itertools = "0.10.3"
 
 # for mmr-gadget tests
 parking_lot = "0.12.1"
-sc-block-builder = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43", default-features = false }
-sp-consensus = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43", default-features = false }
-sp-tracing = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43", default-features = false }
-substrate-test-runtime-client = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43", default-features = false }
+sc-block-builder = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0", default-features = false }
+sp-consensus = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0", default-features = false }
+sp-tracing = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0", default-features = false }
+substrate-test-runtime-client = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0", default-features = false }
 tokio = "1.17.0"
 
 [features]
@@ -108,10 +112,6 @@ std = [
 	"log/std",
 	"mmr-gadget",
 ]
-mmr-gadget = [
-	"futures",
-	"sc-client-api",
-	"sc-offchain"
-]
+mmr-gadget = ["futures", "sc-client-api", "sc-offchain"]
 runtime-benchmarks = ["frame-benchmarking/runtime-benchmarks"]
 try-runtime = ["frame-support/try-runtime"]
