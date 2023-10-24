@@ -13,7 +13,6 @@ mod benchmarking;
 
 pub mod traits;
 pub mod types;
-
 pub use acurast_common::is_valid_script;
 pub use pallet::*;
 pub use types::*;

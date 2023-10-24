@@ -12,10 +12,8 @@ mod stub;
 mod tests;
 
 pub mod weights;
-
 #[cfg(feature = "runtime-benchmarks")]
 mod benchmarking;
-
 #[cfg(feature = "runtime-benchmarks")]
 pub use benchmarking::BenchmarkHelper;
 pub use functions::*;
@@ -37,6 +35,7 @@ pub mod pallet {
     use crate::benchmarking::BenchmarkHelper;
     use acurast_common::ListUpdateOperation;
     use codec::MaxEncodedLen;
+    use frame_support::sp_runtime;
     use frame_support::{
         dispatch::DispatchResultWithPostInfo,
         pallet_prelude::{Member, *},
@@ -86,7 +85,7 @@ pub mod pallet {
     }
 
     #[pallet::genesis_build]
-    impl<T: Config> GenesisBuild<T> for GenesisConfig<T> {
+    impl<T: Config> BuildGenesisConfig for GenesisConfig<T> {
         fn build(&self) {
             for (manager, processors) in &self.managers {
                 let manager_id =

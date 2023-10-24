@@ -19,22 +19,22 @@ crate-type = ["lib"]
 [dependencies]
 num = { version = "0.4.0", default-features = false }
 
-codec = { package = "parity-scale-codec", version = "3.0.0", features = ["derive"], default-features = false }
-scale-info = { version = "2.2.0", default-features = false, features = ["derive"] }
+codec = { package = "parity-scale-codec", version = "3.0.0", features = [
+    "derive",
+], default-features = false }
+scale-info = { version = "2.2.0", default-features = false, features = [
+    "derive",
+] }
 
 # Substrate
-sp-core = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "polkadot-v0.9.43" }
-sp-arithmetic = { git = "https://github.com/paritytech/substrate", default-features = false, branch = "polkadot-v0.9.43" }
+sp-core = { git = "https://github.com/moondance-labs/polkadot-sdk", default-features = false, branch = "tanssi-polkadot-v1.1.0" }
+sp-arithmetic = { git = "https://github.com/moondance-labs/polkadot-sdk", default-features = false, branch = "tanssi-polkadot-v1.1.0" }
 
 [dev-dependencies]
-sp-core = { git = "https://github.com/paritytech/substrate", branch = "polkadot-v0.9.43" }
+sp-core = { git = "https://github.com/moondance-labs/polkadot-sdk", branch = "tanssi-polkadot-v1.1.0" }
 hex-literal = "0.3.4"
 rand = "0.8.5"
 
 [features]
 default = ["std"]
-std = [
-    "codec/std",
-    "sp-core/std",
-    "scale-info/std",
-]
+std = ["codec/std", "sp-core/std", "scale-info/std"]

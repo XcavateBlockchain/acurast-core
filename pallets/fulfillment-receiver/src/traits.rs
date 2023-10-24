@@ -1,10 +1,10 @@
 use frame_support::{
-    dispatch::{PostDispatchInfo, Weight},
+    dispatch::PostDispatchInfo,
     sp_runtime::DispatchResultWithInfo,
 };
 
 use crate::{Config, Fulfillment};
-
+use frame_support::pallet_prelude::Weight;
 /// Handles an acurast job fulfillment.
 ///
 /// Implementations should check the origin and reject it with a [DispatchError::BadOrigin] if
